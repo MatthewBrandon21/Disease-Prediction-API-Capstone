@@ -1,0 +1,29 @@
+GET https://api.capstone.matthewbd.my.id/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoibWF0dGhld2JyYW5kb25kYW5pQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoibWF0dGhld2JkIiwibmFtZSI6Ik1hdHRoZXcgQnJhbmRvbiBEYW5pIiwiYWRkcmVzcyI6bnVsbCwicGhvbmVudW0iOm51bGwsImJpcnRoZGF0ZSI6bnVsbCwiaW1nIjpudWxsLCJpYXQiOjE2NTM0NzA3NzcsImV4cCI6MTY1MzQ3MDc5Mn0.Vdc-c8PqI5dIvWso1kjlJnJ7wVzlN1EIZ4FWs1NPsnw
+
+###
+POST https://api.capstone.matthewbd.my.id/register
+Content-Type: application/json
+
+{
+    "email": "matthewbrandondani@gmail.com",
+    "username": "matthewbd",
+    "name": "Matthew Brandon Dani",
+    "password": "pintu123",
+    "confpassword": "pintu123"
+}
+
+###
+POST https://api.capstone.matthewbd.my.id/login
+Content-Type: application/json
+
+{
+    "email": "matthewbrandondani@gmail.com",
+    "password": "pintu123"
+}
+
+###
+GET https://api.capstone.matthewbd.my.id/token
+
+###
+DELETE http://localhost:5000/logout

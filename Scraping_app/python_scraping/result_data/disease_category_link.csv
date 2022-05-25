@@ -1,0 +1,289 @@
+disease_name,disease_slug,disease_category_slug,updatedAt,createdAt
+Migrain,migrain,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sakit Kepala Tegang,sakit-kepala-tegang,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Vertigo,vertigo,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Stroke,stroke,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Epilepsi,epilepsi,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Alzheimer,penyakit-alzheimer,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Parkinson,penyakit-parkinson,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Cerebral Palsy,lumpuh-otak,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Transient Ischemic Attack (TIA),tia-transient-ischaemic-attack,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Hidrosefalus,hidrosefalus,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sakit Kepala,sakit-kepala,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Radang Otak,radang-otak,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Tumor Otak,tumor-otak,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Koma,koma,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Amnesia,amnesia,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Meningioma,meningioma,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Stroke Hemoragik,stroke-hemoragik,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Delirium,delirium,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Ensefalopati,ensefalopati,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Amyotrophic Lateral Sclerosis (ALS),penyakit-lou-gehrig,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Demensia,demensia,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Sapi Gila,penyakit-sapi-gila,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Prolaktinoma,prolaktinoma,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Aneurisma Otak,aneurisma-otak,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Cedera Kepala,cedera-kepala,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sindrom Wernicke-Korsakoff,sindrom-wernicke-korsakoff,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Abses Otak,abses-otak,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penurunan Kesadaran,penurunan-kesadaran,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Pembengkakan Otak,pembengkakan-otak,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Retardasi Mental,retardasi-mental,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Herniasi Otak,herniasi-otak,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Pseudobulbar Affect (PBA),pseudobulbar-affect-pba,virus,2022/05/24 14:13:28,2022/05/24 14:13:28
+Migrain,migrain,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sakit Kepala Tegang,sakit-kepala-tegang,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Vertigo,vertigo,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Stroke,stroke,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Epilepsi,epilepsi,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Alzheimer,penyakit-alzheimer,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Parkinson,penyakit-parkinson,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Cerebral Palsy,lumpuh-otak,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Transient Ischemic Attack (TIA),tia-transient-ischaemic-attack,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Hidrosefalus,hidrosefalus,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sakit Kepala,sakit-kepala,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Radang Otak,radang-otak,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Tumor Otak,tumor-otak,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Koma,koma,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Amnesia,amnesia,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Meningioma,meningioma,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Stroke Hemoragik,stroke-hemoragik,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Delirium,delirium,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Ensefalopati,ensefalopati,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Amyotrophic Lateral Sclerosis (ALS),penyakit-lou-gehrig,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Demensia,demensia,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Sapi Gila,penyakit-sapi-gila,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Prolaktinoma,prolaktinoma,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Aneurisma Otak,aneurisma-otak,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Cedera Kepala,cedera-kepala,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sindrom Wernicke-Korsakoff,sindrom-wernicke-korsakoff,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Abses Otak,abses-otak,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penurunan Kesadaran,penurunan-kesadaran,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Pembengkakan Otak,pembengkakan-otak,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Retardasi Mental,retardasi-mental,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Herniasi Otak,herniasi-otak,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Pseudobulbar Affect (PBA),pseudobulbar-affect-pba,kanker,2022/05/24 14:13:28,2022/05/24 14:13:28
+Migrain,migrain,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sakit Kepala Tegang,sakit-kepala-tegang,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Vertigo,vertigo,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Stroke,stroke,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Epilepsi,epilepsi,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Alzheimer,penyakit-alzheimer,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Parkinson,penyakit-parkinson,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Cerebral Palsy,lumpuh-otak,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Transient Ischemic Attack (TIA),tia-transient-ischaemic-attack,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Hidrosefalus,hidrosefalus,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sakit Kepala,sakit-kepala,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Radang Otak,radang-otak,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Tumor Otak,tumor-otak,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Koma,koma,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Amnesia,amnesia,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Meningioma,meningioma,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Stroke Hemoragik,stroke-hemoragik,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Delirium,delirium,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Ensefalopati,ensefalopati,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Amyotrophic Lateral Sclerosis (ALS),penyakit-lou-gehrig,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Demensia,demensia,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Sapi Gila,penyakit-sapi-gila,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Prolaktinoma,prolaktinoma,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Aneurisma Otak,aneurisma-otak,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Cedera Kepala,cedera-kepala,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sindrom Wernicke-Korsakoff,sindrom-wernicke-korsakoff,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Abses Otak,abses-otak,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penurunan Kesadaran,penurunan-kesadaran,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Pembengkakan Otak,pembengkakan-otak,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Retardasi Mental,retardasi-mental,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Herniasi Otak,herniasi-otak,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Pseudobulbar Affect (PBA),pseudobulbar-affect-pba,jantung,2022/05/24 14:13:28,2022/05/24 14:13:28
+Migrain,migrain,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sakit Kepala Tegang,sakit-kepala-tegang,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Vertigo,vertigo,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Stroke,stroke,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Epilepsi,epilepsi,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Alzheimer,penyakit-alzheimer,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Parkinson,penyakit-parkinson,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Cerebral Palsy,lumpuh-otak,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Transient Ischemic Attack (TIA),tia-transient-ischaemic-attack,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Hidrosefalus,hidrosefalus,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sakit Kepala,sakit-kepala,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Radang Otak,radang-otak,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Tumor Otak,tumor-otak,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Koma,koma,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Amnesia,amnesia,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Meningioma,meningioma,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Stroke Hemoragik,stroke-hemoragik,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Delirium,delirium,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Ensefalopati,ensefalopati,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Amyotrophic Lateral Sclerosis (ALS),penyakit-lou-gehrig,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Demensia,demensia,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Sapi Gila,penyakit-sapi-gila,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Prolaktinoma,prolaktinoma,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Aneurisma Otak,aneurisma-otak,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Cedera Kepala,cedera-kepala,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sindrom Wernicke-Korsakoff,sindrom-wernicke-korsakoff,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Abses Otak,abses-otak,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penurunan Kesadaran,penurunan-kesadaran,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Pembengkakan Otak,pembengkakan-otak,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Retardasi Mental,retardasi-mental,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Herniasi Otak,herniasi-otak,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Pseudobulbar Affect (PBA),pseudobulbar-affect-pba,otak,2022/05/24 14:13:28,2022/05/24 14:13:28
+Migrain,migrain,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sakit Kepala Tegang,sakit-kepala-tegang,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Vertigo,vertigo,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Stroke,stroke,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Epilepsi,epilepsi,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Alzheimer,penyakit-alzheimer,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Parkinson,penyakit-parkinson,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Cerebral Palsy,lumpuh-otak,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Transient Ischemic Attack (TIA),tia-transient-ischaemic-attack,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Hidrosefalus,hidrosefalus,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sakit Kepala,sakit-kepala,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Radang Otak,radang-otak,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Tumor Otak,tumor-otak,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Koma,koma,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Amnesia,amnesia,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Meningioma,meningioma,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Stroke Hemoragik,stroke-hemoragik,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Delirium,delirium,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Ensefalopati,ensefalopati,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Amyotrophic Lateral Sclerosis (ALS),penyakit-lou-gehrig,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Demensia,demensia,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Sapi Gila,penyakit-sapi-gila,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Prolaktinoma,prolaktinoma,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Aneurisma Otak,aneurisma-otak,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Cedera Kepala,cedera-kepala,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sindrom Wernicke-Korsakoff,sindrom-wernicke-korsakoff,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Abses Otak,abses-otak,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penurunan Kesadaran,penurunan-kesadaran,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Pembengkakan Otak,pembengkakan-otak,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Retardasi Mental,retardasi-mental,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Herniasi Otak,herniasi-otak,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Pseudobulbar Affect (PBA),pseudobulbar-affect-pba,psikologi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Migrain,migrain,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sakit Kepala Tegang,sakit-kepala-tegang,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Vertigo,vertigo,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Stroke,stroke,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Epilepsi,epilepsi,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Alzheimer,penyakit-alzheimer,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Parkinson,penyakit-parkinson,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Cerebral Palsy,lumpuh-otak,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Transient Ischemic Attack (TIA),tia-transient-ischaemic-attack,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Hidrosefalus,hidrosefalus,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sakit Kepala,sakit-kepala,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Radang Otak,radang-otak,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Tumor Otak,tumor-otak,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Koma,koma,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Amnesia,amnesia,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Meningioma,meningioma,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Stroke Hemoragik,stroke-hemoragik,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Delirium,delirium,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Ensefalopati,ensefalopati,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Amyotrophic Lateral Sclerosis (ALS),penyakit-lou-gehrig,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Demensia,demensia,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Sapi Gila,penyakit-sapi-gila,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Prolaktinoma,prolaktinoma,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Aneurisma Otak,aneurisma-otak,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Cedera Kepala,cedera-kepala,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sindrom Wernicke-Korsakoff,sindrom-wernicke-korsakoff,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Abses Otak,abses-otak,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penurunan Kesadaran,penurunan-kesadaran,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Pembengkakan Otak,pembengkakan-otak,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Retardasi Mental,retardasi-mental,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Herniasi Otak,herniasi-otak,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Pseudobulbar Affect (PBA),pseudobulbar-affect-pba,defisiensi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Migrain,migrain,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sakit Kepala Tegang,sakit-kepala-tegang,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Vertigo,vertigo,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Stroke,stroke,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Epilepsi,epilepsi,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Alzheimer,penyakit-alzheimer,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Parkinson,penyakit-parkinson,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Cerebral Palsy,lumpuh-otak,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Transient Ischemic Attack (TIA),tia-transient-ischaemic-attack,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Hidrosefalus,hidrosefalus,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sakit Kepala,sakit-kepala,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Radang Otak,radang-otak,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Tumor Otak,tumor-otak,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Koma,koma,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Amnesia,amnesia,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Meningioma,meningioma,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Stroke Hemoragik,stroke-hemoragik,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Delirium,delirium,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Ensefalopati,ensefalopati,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Amyotrophic Lateral Sclerosis (ALS),penyakit-lou-gehrig,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Demensia,demensia,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Sapi Gila,penyakit-sapi-gila,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Prolaktinoma,prolaktinoma,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Aneurisma Otak,aneurisma-otak,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Cedera Kepala,cedera-kepala,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sindrom Wernicke-Korsakoff,sindrom-wernicke-korsakoff,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Abses Otak,abses-otak,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penurunan Kesadaran,penurunan-kesadaran,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Pembengkakan Otak,pembengkakan-otak,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Retardasi Mental,retardasi-mental,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Herniasi Otak,herniasi-otak,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Pseudobulbar Affect (PBA),pseudobulbar-affect-pba,infeksi,2022/05/24 14:13:28,2022/05/24 14:13:28
+Migrain,migrain,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sakit Kepala Tegang,sakit-kepala-tegang,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Vertigo,vertigo,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Stroke,stroke,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Epilepsi,epilepsi,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Alzheimer,penyakit-alzheimer,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Parkinson,penyakit-parkinson,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Cerebral Palsy,lumpuh-otak,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Transient Ischemic Attack (TIA),tia-transient-ischaemic-attack,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Hidrosefalus,hidrosefalus,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sakit Kepala,sakit-kepala,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Radang Otak,radang-otak,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Tumor Otak,tumor-otak,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Koma,koma,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Amnesia,amnesia,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Meningioma,meningioma,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Stroke Hemoragik,stroke-hemoragik,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Delirium,delirium,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Ensefalopati,ensefalopati,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Amyotrophic Lateral Sclerosis (ALS),penyakit-lou-gehrig,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Demensia,demensia,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Sapi Gila,penyakit-sapi-gila,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Prolaktinoma,prolaktinoma,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Aneurisma Otak,aneurisma-otak,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Cedera Kepala,cedera-kepala,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sindrom Wernicke-Korsakoff,sindrom-wernicke-korsakoff,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Abses Otak,abses-otak,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penurunan Kesadaran,penurunan-kesadaran,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Pembengkakan Otak,pembengkakan-otak,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Retardasi Mental,retardasi-mental,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Herniasi Otak,herniasi-otak,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Pseudobulbar Affect (PBA),pseudobulbar-affect-pba,mata,2022/05/24 14:13:28,2022/05/24 14:13:28
+Migrain,migrain,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sakit Kepala Tegang,sakit-kepala-tegang,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Vertigo,vertigo,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Stroke,stroke,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Epilepsi,epilepsi,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Alzheimer,penyakit-alzheimer,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Parkinson,penyakit-parkinson,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Cerebral Palsy,lumpuh-otak,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Transient Ischemic Attack (TIA),tia-transient-ischaemic-attack,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Hidrosefalus,hidrosefalus,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sakit Kepala,sakit-kepala,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Radang Otak,radang-otak,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Tumor Otak,tumor-otak,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Koma,koma,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Amnesia,amnesia,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Meningioma,meningioma,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Stroke Hemoragik,stroke-hemoragik,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Delirium,delirium,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Ensefalopati,ensefalopati,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Amyotrophic Lateral Sclerosis (ALS),penyakit-lou-gehrig,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Demensia,demensia,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penyakit Sapi Gila,penyakit-sapi-gila,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Prolaktinoma,prolaktinoma,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Aneurisma Otak,aneurisma-otak,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Cedera Kepala,cedera-kepala,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Sindrom Wernicke-Korsakoff,sindrom-wernicke-korsakoff,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Abses Otak,abses-otak,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Penurunan Kesadaran,penurunan-kesadaran,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Pembengkakan Otak,pembengkakan-otak,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Retardasi Mental,retardasi-mental,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Herniasi Otak,herniasi-otak,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28
+Pseudobulbar Affect (PBA),pseudobulbar-affect-pba,pencernaan,2022/05/24 14:13:28,2022/05/24 14:13:28

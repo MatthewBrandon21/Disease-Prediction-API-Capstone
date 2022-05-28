@@ -1,0 +1,28 @@
+GET https://api.capstone.matthewbd.my.id/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5hbWUiOiJNYXR0aGV3IEJyYW5kb24gRGFuaSIsImVtYWlsIjoibWF0dGhld2JyYW5kb25kYW5pQGdtYWlsLmNvbSIsImlhdCI6MTY1MjkzOTAzOSwiZXhwIjoxNjUyOTM5MDU5fQ.h43P10gQrtWtLZ6_-ZYHOS68c9YamSD5bnrHO2FBO24
+
+###
+POST https://api.capstone.matthewbd.my.id/register
+Content-Type: application/json
+
+{
+    "name": "Matthew Brandon Dani",
+    "email": "matthewbrandondani@gmail.com",
+    "password": "pintu123",
+    "confpassword": "pintu123"
+}
+
+###
+POST https://api.capstone.matthewbd.my.id/login
+Content-Type: application/json
+
+{
+    "email": "matthewbrandondani@gmail.com",
+    "password": "pintu123"
+}
+
+###
+GET https://api.capstone.matthewbd.my.id/token
+
+###
+DELETE https://api.capstone.matthewbd.my.id/logout

@@ -8,11 +8,9 @@ Product Capstone Bangkit 2022
 
 **Client:** React
 
-**Server:** Node, Express, MySQL, Sequelize
+**Server:** Node, Express, MySQL, Sequelize, Google Cloud Storage, Multer
 
 ## TO DO
-
-- Complete auth system
 
 - Complete CRUD and cleanning database
 
@@ -24,9 +22,11 @@ Product Capstone Bangkit 2022
 
 https://api.capstone.matthewbd.my.id
 
-deployed in GCP CE
+deployed in GCP CE + Google Cloud Storage Bucket
 
 ## User API Reference
+
+Auto check user request from JWT Token (can't change another user's data when the token doesn't match).
 
 #### Login
 
@@ -39,6 +39,10 @@ deployed in GCP CE
 | `email`    | `string` | **Required** |
 | `password` | `string` | **Required** |
 
+#### notes
+
+Already response with userdata. and if user "isactive" == 0 or banned, API will response 403.
+
 #### Register
 
 ```http
@@ -50,12 +54,15 @@ deployed in GCP CE
 | `email`        | `string` | **Required** |
 | `username`     | `string` | **Required** |
 | `name`         | `string` | **Required** |
+| `address`      | `string` |              |
+| `phonenum`     | `string` |              |
+| `birthdate`    | `string` |              |
 | `password`     | `string` | **Required** |
 | `confpassword` | `string` | **Required** |
 
 #### notes
 
-Full user data -> email, username, name, address, phonenum, birthdate, img, password.
+user image automatically use default profile picture. Update check email and username that exist and joi form validation
 
 #### Get token
 
@@ -73,7 +80,46 @@ Access token expired in 20s. Please read web in Acknowledgement
   GET /logout
 ```
 
-#### Update profile (soon)
+#### Update profile
+
+```http
+  POST /register
+```
+
+| Parameter   | Type     | Description  |
+| :---------- | :------- | :----------- |
+| `email`     | `string` | **Required** |
+| `name`      | `string` | **Required** |
+| `address`   | `string` |              |
+| `phonenum`  | `string` |              |
+| `birthdate` | `string` |              |
+
+#### Update user password
+
+```http
+  POST /user/updatepassword
+```
+
+| Parameter      | Type     | Description  |
+| :------------- | :------- | :----------- |
+| `email`        | `string` | **Required** |
+| `oldpassword`  | `string` | **Required** |
+| `newpassword`  | `string` | **Required** |
+| `confpassword` | `string` | **Required** |
+
+#### Update profile picture
+
+```http
+  POST /user/update-profile-picture
+```
+
+| Parameter | Type     | Description  |
+| :-------- | :------- | :----------- |
+| `email`   | `string` | **Required** |
+
+#### notes
+
+"file" use http post file upload. Please read web in Acknowledgement
 
 ## Data API Reference (login required)
 
@@ -133,6 +179,26 @@ use Authorization -> Bearer Token
 | Parameter | Type     | Description                                  |
 | :-------- | :------- | :------------------------------------------- |
 | `keyword` | `string` | **Required**. Anything in diseases and drugs |
+
+#### Post search disease
+
+```http
+  POST /diseases
+```
+
+| Parameter | Type     | Description                        |
+| :-------- | :------- | :--------------------------------- |
+| `keyword` | `string` | **Required**. Anything in diseases |
+
+#### Post search drugs
+
+```http
+  POST /drugs
+```
+
+| Parameter | Type     | Description                     |
+| :-------- | :------- | :------------------------------ |
+| `keyword` | `string` | **Required**. Anything in drugs |
 
 ## Acknowledgements
 

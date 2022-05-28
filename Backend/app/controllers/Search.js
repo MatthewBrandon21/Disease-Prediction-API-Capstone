@@ -4,6 +4,9 @@ import db from '../../config/database.js';
 import slugify from 'slugify';
 
 export const Search = async (req, res) => {
+  if (!Object.keys(req.body).length) {
+    return res.status(400).json({ msg: 'Request body not match' });
+  }
   try {
     const search = await db.query(
       'SELECT * FROM diseases WHERE slug LIKE :key OR slug LIKE :slugkey OR name LIKE :key OR other_name LIKE :key UNION SELECT * FROM drugs WHERE slug LIKE :key OR slug LIKE :slugkey OR name LIKE :key OR other_name LIKE :key',
@@ -18,7 +21,7 @@ export const Search = async (req, res) => {
     res.json(search);
   } catch (error) {
     console.log(error);
-    res.json({ msg: 'Error fetch data!' });
+    res.status(404).send('404 Not Found');
   }
 };
 
@@ -56,6 +59,6 @@ export const getDiseaseDrugBySlug = async (req, res) => {
     res.json(diseasesdrug);
   } catch (error) {
     console.log(error);
-    res.json({ msg: 'Error fetch data!' });
+    res.status(404).send('404 Not Found');
   }
 };

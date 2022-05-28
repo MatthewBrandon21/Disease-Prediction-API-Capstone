@@ -1,14 +1,17 @@
 import Drug from '../models/DrugModel.js';
+import { Op, QueryTypes } from 'sequelize';
+import db from '../../config/database.js';
+import slugify from 'slugify';
 
 export const getAllDrugs = async (req, res) => {
   try {
     const drugs = await Drug.findAll({
-      attributes: ['name', 'other_name', 'slug', 'excerpt', 'img'],
+      attributes: ['name', 'other_name', 'slug', 'excerpt', 'img', 'updatedAt'],
     });
     res.json(drugs);
   } catch (error) {
     console.log(error);
-    res.json({ msg: 'Error fetch data!' });
+    res.status(404).send('404 Not Found');
   }
 };
 
@@ -30,6 +33,28 @@ export const getDrugBySlug = async (req, res) => {
     res.json(drug);
   } catch (error) {
     console.log(error);
-    res.json({ msg: 'Error fetch data!' });
+    res.status(404).send('404 Not Found');
+  }
+};
+
+export const SearchDrugs = async (req, res) => {
+  if (!Object.keys(req.body).length) {
+    return res.status(400).json({ msg: 'Request body not match' });
+  }
+  try {
+    const search = await db.query(
+      'SELECT * FROM drugs WHERE slug LIKE :key OR slug LIKE :slugkey OR name LIKE :key OR other_name LIKE :key OR description LIKE :key OR excerpt LIKE :key',
+      {
+        replacements: {
+          key: req.body.keyword + '%',
+          slugkey: slugify(req.body.keyword) + '%',
+        },
+        type: QueryTypes.SELECT,
+      }
+    );
+    res.json(search);
+  } catch (error) {
+    console.log(error);
+    res.status(404).send('404 Not Found');
   }
 };

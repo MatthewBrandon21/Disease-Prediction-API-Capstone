@@ -62,7 +62,7 @@ Already response with userdata. and if user "isactive" == 0 or banned, API will 
 
 #### notes
 
-user image automatically use default profile picture. Update check email and username that exist and joi form validation
+user image automatically use default profile picture. Update!, check email and username that exist and joi form validation
 
 #### Get token
 
@@ -116,6 +116,7 @@ Access token expired in 20s. Please read web in Acknowledgement
 | Parameter | Type     | Description  |
 | :-------- | :------- | :----------- |
 | `email`   | `string` | **Required** |
+| `file`    | `file`   | **Required** |
 
 #### notes
 
@@ -203,6 +204,7 @@ use Authorization -> Bearer Token
 ## Acknowledgements
 
 - [Kotlin AccessToken and RefreshToken ](https://stackoverflow.com/questions/22450036/refreshing-oauth-token-using-retrofit-without-modifying-all-calls)
+- [Kotlin File POST ](https://stackoverflow.com/questions/57490228/how-to-upload-an-image-to-a-server-using-http-request-in-kotlin)
 
 ## Deployment
 

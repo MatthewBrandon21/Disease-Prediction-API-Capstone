@@ -14,8 +14,6 @@ Product Capstone Bangkit 2022
 
 - Complete CRUD and cleanning database
 
-- build 404 function if data not found
-
 - Development React admin panel
 
 ## API Deployment Link

@@ -41,6 +41,21 @@ Auto check user request from JWT Token (can't change another user's data when th
 
 Already response with userdata. and if user "isactive" == 0 or banned, API will response 403.
 
+#### Login - APP (without httponly Cookie)
+
+```http
+  POST /login-app
+```
+
+| Parameter  | Type     | Description  |
+| :--------- | :------- | :----------- |
+| `email`    | `string` | **Required** |
+| `password` | `string` | **Required** |
+
+#### notes
+
+Already response with userdata. and if user "isactive" == 0 or banned, API will response 403.
+
 #### Register
 
 ```http
@@ -67,6 +82,20 @@ user image automatically use default profile picture. Update!, check email and u
 ```http
   GET /token
 ```
+
+#### notes
+
+Access token expired in 20s. Please read web in Acknowledgement
+
+#### Get token
+
+```http
+  POST /token-app
+```
+
+| Parameter      | Type     | Description  |
+| :------------- | :------- | :----------- |
+| `refreshToken` | `string` | **Required** |
 
 #### notes
 

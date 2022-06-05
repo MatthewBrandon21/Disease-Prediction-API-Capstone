@@ -6,21 +6,21 @@ Product Capstone Bangkit 2022
 
 **Mobile:** Kotlin
 
-**Client:** React
+**Client:** React, Axios, Bulma CSS, CKEditor 5
 
 **Server:** Node, Express, MySQL, Sequelize, Google Cloud Storage, Multer
-
-## TO DO
-
-- Complete CRUD and cleanning database
-
-- Development React admin panel
 
 ## API Deployment Link
 
 https://api.capstone.matthewbd.my.id
 
 deployed in GCP CE + Google Cloud Storage Bucket
+
+## Admin Dashboard Deployment
+
+https://capstone.matthewbd.my.id
+
+deployed in GCP CE
 
 ## User API Reference
 

@@ -14,7 +14,7 @@ export const getAllDiseases = async (req, res) => {
     res.json(diseases);
   } catch (error) {
     console.log(error);
-    res.status(404).send('404 Not Found');
+    res.status(404).json({ msg: '404 Not Found' });
   }
 };
 
@@ -26,7 +26,7 @@ export const getAllDiseasesCategory = async (req, res) => {
     res.json(diseasescategory);
   } catch (error) {
     console.log(error);
-    res.status(404).send('404 Not Found');
+    res.status(404).json({ msg: '404 Not Found' });
   }
 };
 
@@ -39,7 +39,7 @@ export const getDiseasesCategoryLink = async (req, res) => {
     res.json(diseasescategorylink);
   } catch (error) {
     console.log(error);
-    res.status(404).send('404 Not Found');
+    res.status(404).json({ msg: '404 Not Found' });
   }
 };
 
@@ -56,7 +56,7 @@ export const getDiseaseBySlug = async (req, res) => {
     res.json(diseases);
   } catch (error) {
     console.log(error);
-    res.status(404).send('404 Not Found');
+    res.status(404).json({ msg: '404 Not Found' });
   }
 };
 
@@ -66,11 +66,11 @@ export const SearchDiseases = async (req, res) => {
   }
   try {
     const search = await db.query(
-      'SELECT * FROM diseases WHERE slug LIKE :key OR slug LIKE :slugkey OR name LIKE :key OR other_name LIKE :key OR description LIKE :key OR excerpt LIKE :key',
+      'SELECT * FROM diseases WHERE slug LIKE :key OR slug LIKE :slugkey OR name LIKE :key OR other_name LIKE :key',
       {
         replacements: {
-          key: req.body.keyword + '%',
-          slugkey: slugify(req.body.keyword) + '%',
+          key: '%' + req.body.keyword + '%',
+          slugkey: '%' + slugify(req.body.keyword) + '%',
         },
         type: QueryTypes.SELECT,
       }
@@ -78,6 +78,6 @@ export const SearchDiseases = async (req, res) => {
     res.json(search);
   } catch (error) {
     console.log(error);
-    res.status(404).send('404 Not Found');
+    res.status(404).json({ msg: '404 Not Found' });
   }
 };

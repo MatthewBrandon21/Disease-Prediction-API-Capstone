@@ -11,7 +11,7 @@ export const getAllDrugs = async (req, res) => {
     res.json(drugs);
   } catch (error) {
     console.log(error);
-    res.status(404).send('404 Not Found');
+    res.status(404).json({ msg: '404 Not Found' });
   }
 };
 
@@ -33,7 +33,7 @@ export const getDrugBySlug = async (req, res) => {
     res.json(drug);
   } catch (error) {
     console.log(error);
-    res.status(404).send('404 Not Found');
+    res.status(404).json({ msg: '404 Not Found' });
   }
 };
 
@@ -43,11 +43,11 @@ export const SearchDrugs = async (req, res) => {
   }
   try {
     const search = await db.query(
-      'SELECT * FROM drugs WHERE slug LIKE :key OR slug LIKE :slugkey OR name LIKE :key OR other_name LIKE :key OR description LIKE :key OR excerpt LIKE :key',
+      'SELECT * FROM drugs WHERE slug LIKE :key OR slug LIKE :slugkey OR name LIKE :key OR other_name LIKE :key',
       {
         replacements: {
-          key: req.body.keyword + '%',
-          slugkey: slugify(req.body.keyword) + '%',
+          key: '%' + req.body.keyword + '%',
+          slugkey: '%' + slugify(req.body.keyword) + '%',
         },
         type: QueryTypes.SELECT,
       }
@@ -55,6 +55,6 @@ export const SearchDrugs = async (req, res) => {
     res.json(search);
   } catch (error) {
     console.log(error);
-    res.status(404).send('404 Not Found');
+    res.status(404).json({ msg: '404 Not Found' });
   }
 };

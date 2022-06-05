@@ -1,5 +1,6 @@
-import Drug from '../models/DrugModel.js';
+import Disease from '../models/DiseaseModel.js';
 import DiseaseDrug from '../models/DiseaseDrugModel.js';
+import DiseaseCategoryLink from '../models/DiseaseCategoryLinkModel.js';
 import { Storage } from '@google-cloud/storage';
 import { v1 } from 'uuid';
 import slugify from 'slugify';
@@ -19,29 +20,34 @@ const storage = new Storage({
 
 const bucket = storage.bucket(process.env.GCS_BUCKET);
 
-export const adminGetAllDrugs = async (req, res) => {
+export const adminGetAllDiseases = async (req, res) => {
   try {
-    const drugs = await Drug.findAll();
-    res.json(drugs);
+    const diseases = await Disease.findAll();
+    res.json(diseases);
   } catch (error) {
     console.log(error);
     res.status(404).send('404 Not Found');
   }
 };
 
-export const AdminGetDrugBySlug = async (req, res) => {
+export const AdminGetDiseaseBySlug = async (req, res) => {
   try {
-    const drug = await Drug.findAll({
+    const disease = await Disease.findAll({
       where: { slug: req.params.slug },
+      include: [
+        {
+          model: DiseaseDrug,
+        },
+      ],
     });
-    res.json(drug[0]);
+    res.json(disease[0]);
   } catch (error) {
     console.log(error);
     res.status(404).send('404 Not Found');
   }
 };
 
-export const AdminCreateDrug = async (req, res) => {
+export const AdminCreateDisease = async (req, res) => {
   var filesize = '';
   try {
     filesize = req.file.size;
@@ -52,7 +58,7 @@ export const AdminCreateDrug = async (req, res) => {
     try {
       let itteration = 1;
       let slug = slugify(req.body.name);
-      let slugexist = await Drug.findAll({
+      let slugexist = await Disease.findAll({
         where: {
           slug: slug,
         },
@@ -63,7 +69,7 @@ export const AdminCreateDrug = async (req, res) => {
         while (exit == 0) {
           slug = baseslug + '-' + itteration;
           itteration++;
-          slugexist = await Drug.findAll({
+          slugexist = await Disease.findAll({
             where: {
               slug: slug,
             },
@@ -73,7 +79,7 @@ export const AdminCreateDrug = async (req, res) => {
           }
         }
       }
-      await Drug.create({
+      await Disease.create({
         name: req.body.name,
         other_name: req.body.other_name,
         slug: slug,
@@ -81,7 +87,7 @@ export const AdminCreateDrug = async (req, res) => {
         excerpt: req.body.excerpt,
         img: 'https://storage.googleapis.com/diseases-prediction-bucket/diseases-prediction-default-thumbnail.jpg',
       });
-      res.json({ message: 'Drugs Created' });
+      res.json({ message: 'Disease Created' });
     } catch (error) {
       console.log(error);
       res.status(404).send('404 Not Found');
@@ -117,7 +123,7 @@ export const AdminCreateDrug = async (req, res) => {
         const publicUrl = `https://storage.googleapis.com/${process.env.GCS_BUCKET}/${blob.name}`;
         const slug = slugify(req.body.name) + '-' + uuidv1();
         try {
-          Drug.create({
+          Disease.create({
             name: req.body.name,
             other_name: req.body.other_name,
             slug: slug,
@@ -125,7 +131,7 @@ export const AdminCreateDrug = async (req, res) => {
             excerpt: req.body.excerpt,
             img: publicUrl,
           });
-          res.json({ message: 'Drugs Created' });
+          res.json({ message: 'Disease Created' });
         } catch (error) {
           console.log(error);
           res.status(404).send('404 Not Found');
@@ -139,7 +145,7 @@ export const AdminCreateDrug = async (req, res) => {
   }
 };
 
-export const AdminUpdateDrug = async (req, res) => {
+export const AdminUpdateDisease = async (req, res) => {
   var filesize = '';
   try {
     filesize = req.file.size;
@@ -150,7 +156,7 @@ export const AdminUpdateDrug = async (req, res) => {
     try {
       let itteration = 1;
       let slug = slugify(req.body.name);
-      let slugexist = await Drug.findAll({
+      let slugexist = await Disease.findAll({
         where: {
           slug: slug,
         },
@@ -161,7 +167,7 @@ export const AdminUpdateDrug = async (req, res) => {
         while (exit == 0) {
           slug = baseslug + '-' + itteration;
           itteration++;
-          slugexist = await Drug.findAll({
+          slugexist = await Disease.findAll({
             where: {
               slug: slug,
             },
@@ -171,7 +177,7 @@ export const AdminUpdateDrug = async (req, res) => {
           }
         }
       }
-      await Drug.update(
+      await Disease.update(
         {
           name: req.body.name,
           other_name: req.body.other_name,
@@ -185,7 +191,7 @@ export const AdminUpdateDrug = async (req, res) => {
           },
         }
       );
-      res.json({ message: 'Drugs Updated' });
+      res.json({ message: 'Disease Updated' });
     } catch (error) {
       console.log(error);
       res.status(404).send('404 Not Found');
@@ -221,7 +227,7 @@ export const AdminUpdateDrug = async (req, res) => {
         const publicUrl = `https://storage.googleapis.com/${process.env.GCS_BUCKET}/${blob.name}`;
         const slug = slugify(req.body.name) + '-' + uuidv1();
         try {
-          Drug.update(
+          Disease.update(
             {
               name: req.body.name,
               other_name: req.body.other_name,
@@ -236,7 +242,7 @@ export const AdminUpdateDrug = async (req, res) => {
               },
             }
           );
-          res.json({ message: 'Drugs Updated' });
+          res.json({ message: 'Disease Updated' });
         } catch (error) {
           console.log(error);
           res.status(404).send('404 Not Found');
@@ -250,22 +256,30 @@ export const AdminUpdateDrug = async (req, res) => {
   }
 };
 
-export const AdminDeleteDrug = async (req, res) => {
+export const AdminDeleteDisease = async (req, res) => {
   try {
+    const diseasecategoryexist = await DiseaseCategoryLink.findAll({
+      where: {
+        disease_slug: req.params.slug,
+      },
+    });
+    if (diseasecategoryexist.length > 0) {
+      return res.status(400).send('Disease used by disease category');
+    }
     const diseasedrugexist = await DiseaseDrug.findAll({
       where: {
-        drugs_slug: req.params.slug,
+        diseases_slug: req.params.slug,
       },
     });
     if (diseasedrugexist.length > 0) {
-      return res.status(400).send('Drug used by disease drug');
+      return res.status(400).send('Disease used by disease drug');
     }
-    await Drug.destroy({
+    await Disease.destroy({
       where: {
         slug: req.params.slug,
       },
     });
-    res.json({ message: 'Drugs Deleted' });
+    res.json({ message: 'Disease Deleted' });
   } catch (error) {
     console.log(error);
     res.status(404).send('404 Not Found');

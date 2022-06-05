@@ -16,18 +16,18 @@ try {
   await db.authenticate();
   console.log('Database Connected!');
   Disease.hasMany(DiseaseDrug, {
-    foreignKey: 'diseases_other_slug',
+    foreignKey: 'diseases_slug',
     sourceKey: 'slug',
     onDelete: 'cascade',
   });
   DiseaseDrug.belongsTo(Disease, {
-    foreignKey: 'diseases_other_slug',
+    foreignKey: 'diseases_slug',
   });
 } catch (error) {
   console.log('Connection error: ', error);
 }
 
-app.use(cors());
+app.use(cors({ credentials: true, origin: 'http://localhost:3000' }));
 app.use(cookieParser());
 app.use(express.json());
 app.use(router);

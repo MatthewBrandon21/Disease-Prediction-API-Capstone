@@ -13,6 +13,18 @@ Content-Type: application/json
 }
 
 ###
+POST http://localhost:5000/register
+Content-Type: application/json
+
+{
+    "name": "Matthew Brandon Dani",
+    "email": "matthewbrandondani@gmail.com",
+    "username": "matthewbd",
+    "password": "pintu123",
+    "confpassword": "pintu123"
+}
+
+###
 POST http://localhost:5000/user/update
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoibWF0dGhld2JyYW5kb25kYW5pQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoibWF0dGhld2JkIiwibmFtZSI6Ik1hdHRoZXcgQnJhbmRvbiBEYW5pIiwiYWRkcmVzcyI6bnVsbCwicGhvbmVudW0iOm51bGwsImJpcnRoZGF0ZSI6bnVsbCwiaW1nIjpudWxsLCJpc2FjdGl2ZSI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUzNjM1MDc4LCJleHAiOjE2NTM2MzUwOTh9.7Xk8Z5LXH1RRRk_8oCjp5OENEaGRTjc2Zr6Bt21b8BY
 Content-Type: application/json
@@ -45,14 +57,31 @@ Content-Type: application/json
 }
 
 ###
+POST http://localhost:5000/login-app
+Content-Type: application/json
+
+{
+    "email": "matthewbrandondani@gmail.com",
+    "password": "pintu123"
+}
+
+###
 GET http://localhost:5000/token
+
+###
+POST http://localhost:5000/token-app
+Content-Type: application/json
+
+{
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoibWF0dGhld2JyYW5kb25kYW5pQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoibWF0dGhld2JkIiwibmFtZSI6Ik1hdHRoZXcgQnJhbmRvbiBEYW5pIiwiYWRkcmVzcyI6bnVsbCwicGhvbmVudW0iOm51bGwsImJpcnRoZGF0ZSI6bnVsbCwiaW1nIjpudWxsLCJpc2FjdGl2ZSI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUzOTEzMzgxLCJleHAiOjE2NTM5OTk3ODF9.J0iC6XAawTlwYrEQwYkRD0gUkfj8WpPGkVi4f0AM9iE"
+}
 
 ###
 DELETE http://localhost:5000/logout
 
 ###
 GET http://localhost:5000/diseases
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImVtYWlsIjoia3VjaW5nZ2lsYUBnbWFpbC5jb20iLCJ1c2VybmFtZSI6Imt1Y2luZ2dpbGEiLCJuYW1lIjoiS3VjaW5nIGhpaGloaWkiLCJhZGRyZXNzIjoiU2VtYXJhbmciLCJwaG9uZW51bSI6IjA4MTMxNjY4NDkzNSIsImJpcnRoZGF0ZSI6IjIxLTA0LTIwMDEiLCJpbWciOiJkZWZhdWx0MS5qcGciLCJpc2FjdGl2ZSI6MSwicm9sZSI6InVzZXIiLCJpYXQiOjE2NTM3NDU0MzcsImV4cCI6MTY1Mzc0NTQ1N30.GaB6SjuOkAFnGUROnTfP_UDLAkEf6edxTsH2v-a9Ohw
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoibWF0dGhld2JyYW5kb25kYW5pQGdtYWlsLmNvbSIsInVzZXJuYW1lIjoibWF0dGhld2JkIiwibmFtZSI6Ik1hdHRoZXcgQnJhbmRvbiBEYW5pIiwiYWRkcmVzcyI6bnVsbCwicGhvbmVudW0iOm51bGwsImJpcnRoZGF0ZSI6bnVsbCwiaW1nIjpudWxsLCJpc2FjdGl2ZSI6MSwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjUzOTEzNDUzLCJleHAiOjE2NTM5MTM0Njh9.Pvi9BbyzsarE1tNbrHKn8IJw5wxyEhdS1BvZw0vFBSo
 
 ###
 POST http://localhost:5000/drugs/create

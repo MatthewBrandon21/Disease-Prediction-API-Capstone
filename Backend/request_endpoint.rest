@@ -7,6 +7,7 @@ Content-Type: application/json
 
 {
     "name": "Matthew Brandon Dani",
+    "username": "matthewbd",
     "email": "matthewbrandondani@gmail.com",
     "password": "pintu123",
     "confpassword": "pintu123"

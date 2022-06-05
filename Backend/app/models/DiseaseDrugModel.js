@@ -18,12 +18,6 @@ const DiseaseDrug = db.define(
     diseases_slug: {
       type: DataTypes.STRING,
     },
-    diseases_other_name: {
-      type: DataTypes.STRING,
-    },
-    diseases_other_slug: {
-      type: DataTypes.STRING,
-    },
   },
   {
     freezeTableName: true,

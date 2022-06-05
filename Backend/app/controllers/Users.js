@@ -30,7 +30,7 @@ export const getUsers = async (req, res) => {
     const users = await Users.findAll({});
     res.json(users);
   } catch (error) {
-    res.status(404).send('404 Not Found');
+    res.status(404).json({ msg: '404 Not Found' });
   }
 };
 
@@ -39,7 +39,7 @@ export const Register = async (req, res) => {
     return res.status(400).json({ msg: 'Request body not match' });
   }
   const { error } = userregistervalidation(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).json({ msg: error.details[0].message });
   const {
     email,
     username,
@@ -58,7 +58,7 @@ export const Register = async (req, res) => {
     },
   });
   if (emailexist.length > 0) {
-    return res.status(400).send('Email already exist');
+    return res.status(400).json({ msg: 'Email already exist' });
   }
   const usernameexist = await Users.findAll({
     where: {
@@ -66,7 +66,7 @@ export const Register = async (req, res) => {
     },
   });
   if (usernameexist.length > 0) {
-    return res.status(400).send('Username already exist');
+    return res.status(400).json({ msg: 'Username already exist' });
   }
   const salt = await bcrypt.genSalt();
   const hashpassword = await bcrypt.hash(password, salt);
@@ -84,7 +84,7 @@ export const Register = async (req, res) => {
     res.json({ msg: 'Register success!' });
   } catch (error) {
     console.log(error);
-    res.status(400).send(err);
+    res.status(400).json({ msg: err });
   }
 };
 
@@ -93,7 +93,7 @@ export const Login = async (req, res) => {
     return res.status(400).json({ msg: 'Request body not match' });
   }
   const { error } = userloginvalidation(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).json({ msg: error.details[0].message });
   try {
     const user = await Users.findAll({
       where: {
@@ -101,7 +101,180 @@ export const Login = async (req, res) => {
       },
     });
     if (user[0].isactive == 0) {
-      return res.sendStatus(403);
+      return res
+        .sendStatus(403)
+        .json({ msg: 'Account banned, please contact administrator' });
+    }
+    const match = await bcrypt.compare(req.body.password, user[0].password);
+    if (!match) return res.status(400).json({ msg: 'Wrong Password!' });
+    const userId = user[0].id;
+    const email = user[0].email;
+    const username = user[0].username;
+    const name = user[0].name;
+    const address = user[0].address;
+    const phonenum = user[0].phonenum;
+    const birthdate = user[0].birthdate;
+    const img = user[0].img;
+    const isactive = user[0].isactive;
+    const role = user[0].role;
+    const accessToken = jwt.sign(
+      {
+        userId,
+        email,
+        username,
+        name,
+        address,
+        phonenum,
+        birthdate,
+        img,
+        isactive,
+        role,
+      },
+      process.env.ACCESS_TOKEN_SECRET,
+      {
+        expiresIn: '20s',
+      }
+    );
+    const refreshToken = jwt.sign(
+      {
+        userId,
+        email,
+        username,
+        name,
+        address,
+        phonenum,
+        birthdate,
+        img,
+        isactive,
+        role,
+      },
+      process.env.REFRESH_TOKEN_SECRET,
+      {
+        expiresIn: '1d',
+      }
+    );
+    await Users.update(
+      { refresh_token: refreshToken },
+      {
+        where: {
+          id: userId,
+        },
+      }
+    );
+    res.cookie('refreshToken', refreshToken, {
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000,
+      // secure: true,
+    });
+    res.json({ user, accessToken });
+  } catch (error) {
+    res.status(404).json({ msg: 'Email not found!' });
+  }
+};
+
+export const AndroidLogin = async (req, res) => {
+  if (!Object.keys(req.body).length) {
+    return res.status(400).json({ msg: 'Request body not match' });
+  }
+  const { error } = userloginvalidation(req.body);
+  if (error) return res.status(400).json({ msg: error.details[0].message });
+  try {
+    const user = await Users.findAll({
+      where: {
+        email: req.body.email,
+      },
+    });
+    if (user[0].isactive == 0) {
+      return res
+        .sendStatus(403)
+        .json({ msg: 'Account banned, please contact administrator' });
+    }
+    const match = await bcrypt.compare(req.body.password, user[0].password);
+    if (!match) return res.status(400).json({ msg: 'Wrong Password!' });
+    const userId = user[0].id;
+    const email = user[0].email;
+    const username = user[0].username;
+    const name = user[0].name;
+    const address = user[0].address;
+    const phonenum = user[0].phonenum;
+    const birthdate = user[0].birthdate;
+    const img = user[0].img;
+    const isactive = user[0].isactive;
+    const role = user[0].role;
+    const accessToken = jwt.sign(
+      {
+        userId,
+        email,
+        username,
+        name,
+        address,
+        phonenum,
+        birthdate,
+        img,
+        isactive,
+        role,
+      },
+      process.env.ACCESS_TOKEN_SECRET,
+      {
+        expiresIn: '20s',
+      }
+    );
+    const refreshToken = jwt.sign(
+      {
+        userId,
+        email,
+        username,
+        name,
+        address,
+        phonenum,
+        birthdate,
+        img,
+        isactive,
+        role,
+      },
+      process.env.REFRESH_TOKEN_SECRET,
+      {
+        expiresIn: '1d',
+      }
+    );
+    await Users.update(
+      { refresh_token: refreshToken },
+      {
+        where: {
+          id: userId,
+        },
+      }
+    );
+    res.cookie('refreshToken', refreshToken, {
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000,
+      // secure: true,
+    });
+    res.json({ user, accessToken, refreshToken });
+  } catch (error) {
+    res.status(404).json({ msg: 'Email not found!' });
+  }
+};
+
+export const LoginAdmin = async (req, res) => {
+  if (!Object.keys(req.body).length) {
+    return res.status(400).json({ msg: 'Request body not match' });
+  }
+  const { error } = userloginvalidation(req.body);
+  if (error) return res.status(400).json({ msg: error.details[0].message });
+  try {
+    const user = await Users.findAll({
+      where: {
+        email: req.body.email,
+      },
+    });
+    if (user[0].isactive == 0) {
+      return res
+        .sendStatus(403)
+        .json({ msg: 'Account banned, please contact administrator' });
+    }
+    if (user[0].role.includes('user')) {
+      return res.sendStatus(403).json({ msg: 'Only for administrator' });
     }
     const match = await bcrypt.compare(req.body.password, user[0].password);
     if (!match) return res.status(400).json({ msg: 'Wrong Password!' });
@@ -197,7 +370,7 @@ export const Update = async (req, res) => {
     return res.status(400).json({ msg: 'Request body not match' });
   }
   const { error } = userupdatevalidation(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).json({ msg: error.details[0].message });
   const { email, name, address, phonenum, birthdate } = req.body;
   try {
     const user = await Users.findAll({
@@ -238,7 +411,7 @@ export const Update = async (req, res) => {
       res.json({ msg: 'Update user success!' });
     } catch (error) {
       console.log(error);
-      res.status(400).send(err);
+      res.status(400).json({ msg: err });
     }
   } catch (error) {
     res.status(404).json({ msg: 'Email not found!' });
@@ -280,10 +453,10 @@ export const UpdateProfilePicture = async (req, res) => {
   }
   if (filesize === '') {
     try {
-      res.status(400).send('Photo not found');
+      res.status(400).json({ msg: 'Photo not found' });
     } catch (error) {
       console.log(error);
-      res.status(404).send('404 Not Found');
+      res.status(404).json({ msg: '404 Not Found' });
     }
   } else {
     try {
@@ -300,11 +473,11 @@ export const UpdateProfilePicture = async (req, res) => {
         ((req.file.originalname.lastIndexOf('.') - 1) >>> 0) + 2
       );
       if (!array_of_allowed_files.includes(file_extension)) {
-        return res.status(400).send('Invalid file');
+        return res.status(400).json({ msg: 'Invalid file' });
       }
 
       if (req.file.size / (1024 * 1024) > allowed_file_size) {
-        return res.status(400).send('File too large');
+        return res.status(400).json({ msg: 'File too large' });
       }
 
       const newFileName = uuidv1() + '-' + req.file.originalname;
@@ -328,13 +501,13 @@ export const UpdateProfilePicture = async (req, res) => {
           res.json({ message: 'Profile Picture Updated' });
         } catch (error) {
           console.log(error);
-          res.status(404).send('404 Not Found');
+          res.status(404).json({ msg: '404 Not Found' });
         }
       });
       blobStream.end(req.file.buffer);
     } catch (error) {
       console.log(error);
-      res.status(404).send('404 Not Found');
+      res.status(404).json({ msg: '404 Not Found' });
     }
   }
 };
@@ -344,7 +517,7 @@ export const UpdatePassword = async (req, res) => {
     return res.status(400).json({ msg: 'Request body not match' });
   }
   const { error } = userpasswordvalidation(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).json({ msg: error.details[0].message });
   const { email, oldpassword, newpassword, confpassword } = req.body;
   if (newpassword !== confpassword)
     return res.status(400).json({ msg: 'Password Not Match!' });
@@ -388,7 +561,119 @@ export const UpdatePassword = async (req, res) => {
       res.json({ msg: 'Update password success!' });
     } catch (error) {
       console.log(error);
-      res.status(400).send(err);
+      res.status(400).json({ msg: err });
+    }
+  } catch (error) {
+    res.status(404).json({ msg: 'Email not found!' });
+  }
+};
+
+export const banUser = async (req, res) => {
+  try {
+    const user = await Users.findAll({
+      where: {
+        email: req.params.email,
+      },
+    });
+    try {
+      await Users.update(
+        {
+          isactive: 0,
+        },
+        {
+          where: {
+            id: user[0].id,
+          },
+        }
+      );
+      res.json({ msg: 'Banned user success!' });
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({ msg: err });
+    }
+  } catch (error) {
+    res.status(404).json({ msg: 'Email not found!' });
+  }
+};
+
+export const unbanUser = async (req, res) => {
+  try {
+    const user = await Users.findAll({
+      where: {
+        email: req.params.email,
+      },
+    });
+    try {
+      await Users.update(
+        {
+          isactive: 1,
+        },
+        {
+          where: {
+            id: user[0].id,
+          },
+        }
+      );
+      res.json({ msg: 'Unbanned user success!' });
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({ msg: err });
+    }
+  } catch (error) {
+    res.status(404).json({ msg: 'Email not found!' });
+  }
+};
+
+export const MakeAdmin = async (req, res) => {
+  try {
+    const user = await Users.findAll({
+      where: {
+        email: req.params.email,
+      },
+    });
+    try {
+      await Users.update(
+        {
+          role: 'admin',
+        },
+        {
+          where: {
+            id: user[0].id,
+          },
+        }
+      );
+      res.json({ msg: 'Change role user to admin success!' });
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({ msg: err });
+    }
+  } catch (error) {
+    res.status(404).json({ msg: 'Email not found!' });
+  }
+};
+
+export const MakeUser = async (req, res) => {
+  try {
+    const user = await Users.findAll({
+      where: {
+        email: req.params.email,
+      },
+    });
+    try {
+      await Users.update(
+        {
+          role: 'user',
+        },
+        {
+          where: {
+            id: user[0].id,
+          },
+        }
+      );
+      res.json({ msg: 'Change role user to user success!' });
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({ msg: err });
     }
   } catch (error) {
     res.status(404).json({ msg: 'Email not found!' });

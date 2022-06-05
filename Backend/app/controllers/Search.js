@@ -94,3 +94,16 @@ export const DiseaseDrug_drugSpesific = async (req, res) => {
     res.status(404).json({ msg: '404 Not Found' });
   }
 };
+
+export const adminCreateDiseasesDrugs = async (req, res) => {
+  if (!Object.keys(req.body).length) {
+    return res.status(400).json({ msg: 'Request body not match' });
+  }
+  try {
+    await DiseaseDrug.create(req.body);
+    res.json({ message: 'Disease Drugs Created' });
+  } catch (error) {
+    console.log(error);
+    res.status(404).send('404 Not Found');
+  }
+};

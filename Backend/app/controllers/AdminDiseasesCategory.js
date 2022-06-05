@@ -12,6 +12,19 @@ export const adminGetAllDiseasesCategory = async (req, res) => {
   }
 };
 
+export const adminGetDiseasesCategoryBySlug = async (req, res) => {
+  try {
+    const diseasescategory = await DiseaseCategory.findAll({
+      where: { slug: req.params.slug },
+      attributes: ['name', 'slug', 'description', 'createdAt', 'updatedAt'],
+    });
+    res.json(diseasescategory);
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({ msg: '404 Not Found' });
+  }
+};
+
 export const adminGetDiseasesCategoryLink = async (req, res) => {
   try {
     const diseasescategorylink = await DiseaseCategoryLink.findAll({

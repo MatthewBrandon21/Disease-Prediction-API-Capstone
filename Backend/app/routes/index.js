@@ -47,6 +47,7 @@ import {
 } from '../controllers/AdminDiseases.js';
 import {
   adminGetAllDiseasesCategory,
+  adminGetDiseasesCategoryBySlug,
   adminGetDiseasesCategoryLink,
   adminCreateDiseasesCategory,
   adminCreateDiseasesCategoryLink,
@@ -60,6 +61,7 @@ import {
   getDiseaseDrugBySlug,
   DiseaseDrug_drug,
   DiseaseDrug_drugSpesific,
+  adminCreateDiseasesDrugs,
 } from '../controllers/Search.js';
 
 const router = express.Router();
@@ -152,6 +154,11 @@ router.get(
   verifyAdminToken,
   adminGetAllDiseasesCategory
 );
+router.get(
+  '/admin/diseases-category/:slug',
+  verifyAdminToken,
+  adminGetDiseasesCategoryBySlug
+);
 router.post(
   '/admin/diseases-category',
   verifyAdminToken,
@@ -187,6 +194,12 @@ router.delete(
   '/admin/diseases-category-link/:id',
   verifyAdminToken,
   adminDeleteDiseasesCategoryLink
+);
+
+router.post(
+  '/admin/diseases-drugs',
+  verifyAdminToken,
+  adminCreateDiseasesDrugs
 );
 
 router.get('*', function (req, res) {

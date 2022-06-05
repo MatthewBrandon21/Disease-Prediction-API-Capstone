@@ -4,6 +4,8 @@ import Navbar from './Navbar';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const AddDiseases = () => {
   const [name, setName] = useState('');
@@ -80,7 +82,7 @@ const AddDiseases = () => {
   return (
     <>
       <Navbar />
-      <section style={{ minHeight: '100vh' }}>
+      <section className='mx-6 mt-6' style={{ minHeight: '100vh' }}>
         <div className='container mt-5'>
           <h1 className='has-text-centered is-size-3 has-text-weight-bold'>
             Add Disease
@@ -94,6 +96,7 @@ const AddDiseases = () => {
                   type='text'
                   placeholder='Name'
                   value={diseaseName}
+                  required
                   onChange={(e) => setDiseaseName(e.target.value)}
                 />
               </div>
@@ -104,26 +107,35 @@ const AddDiseases = () => {
                   type='text'
                   placeholder='English Name'
                   value={other_name}
+                  required
                   onChange={(e) => setOther_name(e.target.value)}
                 />
               </div>
               <div className='field'>
                 <label className='label'>Description</label>
-                <input
+                <CKEditor
+                  editor={ClassicEditor}
+                  data={description}
+                  onChange={(event, editor) => setDescription(editor.getData())}
+                />
+                <label className='label mt-3'>Preview Description</label>
+                <textarea
                   className='input'
                   type='text'
                   placeholder='Description'
                   value={description}
+                  disabled
                   onChange={(e) => setDescription(e.target.value)}
                 />
               </div>
-              <div className='field'>
+              <div className='field mt-3'>
                 <label className='label'>Excerpt</label>
                 <input
                   className='input'
                   type='text'
                   placeholder='Excerpt'
                   value={excerpt}
+                  required
                   onChange={(e) => setExcerpt(e.target.value)}
                 />
               </div>

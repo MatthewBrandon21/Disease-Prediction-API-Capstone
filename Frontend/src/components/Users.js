@@ -4,12 +4,15 @@ import Footer from './Footer';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
+import _ from 'lodash';
 
 const Users = () => {
   const [name, setName] = useState('');
   const [token, setToken] = useState('');
   const [expired, setExpired] = useState('');
   const [users, setUsers] = useState([]);
+  const [filterUsers, setFilterUsers] = useState([]);
+  const [search, setSearch] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -60,48 +63,201 @@ const Users = () => {
     setUsers(response.data);
   };
 
+  const banUser = async (email) => {
+    await axiosJWT.get(`http://localhost:5000/banuser/${email}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    getUsers();
+  };
+
+  const unbanUser = async (email) => {
+    await axiosJWT.get(`http://localhost:5000/unbanuser/${email}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    getUsers();
+  };
+
+  const makeAdmin = async (email) => {
+    await axiosJWT.get(`http://localhost:5000/makeadmin/${email}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    getUsers();
+  };
+
+  const makeUser = async (email) => {
+    await axiosJWT.get(`http://localhost:5000/makeuser/${email}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    getUsers();
+  };
+
+  const filterData = (e) => {
+    if (e.target.value !== '') {
+      setSearch(e.target.value);
+      const filterTable = users.filter(
+        (o) =>
+          o['name'].toLowerCase().includes(e.target.value.toLowerCase()) ||
+          o['email'].toLowerCase().includes(e.target.value.toLowerCase()) ||
+          o['username'].toLowerCase().includes(e.target.value.toLowerCase())
+      );
+      setFilterUsers([...filterTable]);
+    } else {
+      setSearch(e.target.value);
+      setUsers([...users]);
+    }
+  };
+
   return (
     <>
       <Navbar />
-      <section style={{ minHeight: '100vh' }}>
+      <section className='mx-6 mt-6' style={{ minHeight: '100vh' }}>
         <div className='container mt-5'>
           <h1 className='has-text-centered is-size-3 has-text-weight-bold'>
             User List
           </h1>
-          <table className='table is-striped is-fullwidth is-hoverable mt-6 mb-6'>
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Role</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tfoot>
-              <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Role</th>
-                <th>Action</th>
-              </tr>
-            </tfoot>
-            <tbody>
-              {users.map((user, index) => (
-                <tr key={user.id}>
-                  <th>{index + 1}</th>
-                  <td>{user.name}</td>
-                  <td>{user.role}</td>
-                  <td>
-                    <button className='button is-info m-1'>Details</button>
-                    <button className='button is-danger m-1'>Ban</button>
-                    <button className='button is-warning m-1'>
-                      Make Admin
-                    </button>
-                  </td>
+          <p className='has-text-centered'>{`(${users.length} data)`}</p>
+          <input
+            className='input m-4'
+            type='text'
+            placeholder='Search..'
+            value={search}
+            onChange={filterData}
+          ></input>
+          {!users ? (
+            'No data found'
+          ) : (
+            <table className='table is-striped is-fullwidth is-hoverable mt-6 mb-6'>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Name</th>
+                  <th>email</th>
+                  <th>username</th>
+                  <th>Role</th>
+                  <th>Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th></th>
+                  <th>Name</th>
+                  <th>email</th>
+                  <th>username</th>
+                  <th>Role</th>
+                  <th>Action</th>
+                </tr>
+              </tfoot>
+              <tbody>
+                {search.length > 0
+                  ? filterUsers.map((user, index) => (
+                      <tr key={user.id}>
+                        <td>
+                          <figure class='image is-64x64'>
+                            <img
+                              class='is-rounded'
+                              src={user.img}
+                              alt={user.name}
+                            />
+                          </figure>
+                        </td>
+                        <td>{user.name}</td>
+                        <td>{user.email}</td>
+                        <td>{user.username}</td>
+                        <td>{user.role}</td>
+                        <td>
+                          {user.isactive === 1 ? (
+                            <button
+                              onClick={() => banUser(user.email)}
+                              className='button is-warning m-1'
+                            >
+                              Ban
+                            </button>
+                          ) : (
+                            <button
+                              onClick={() => unbanUser(user.email)}
+                              className='button is-danger m-1'
+                            >
+                              Unban
+                            </button>
+                          )}
+                          {user.role === 'admin' ? (
+                            <button
+                              onClick={() => makeUser(user.email)}
+                              className='button is-warning m-1'
+                            >
+                              Make User
+                            </button>
+                          ) : (
+                            <button
+                              onClick={() => makeAdmin(user.email)}
+                              className='button is-danger m-1'
+                            >
+                              Make Admin
+                            </button>
+                          )}
+                        </td>
+                      </tr>
+                    ))
+                  : users.map((user, index) => (
+                      <tr key={user.id}>
+                        <td>
+                          <figure class='image is-64x64'>
+                            <img
+                              class='is-rounded'
+                              src={user.img}
+                              alt={user.name}
+                            />
+                          </figure>
+                        </td>
+                        <td>{user.name}</td>
+                        <td>{user.email}</td>
+                        <td>{user.username}</td>
+                        <td>{user.role}</td>
+                        <td>
+                          {user.isactive === 1 ? (
+                            <button
+                              onClick={() => banUser(user.email)}
+                              className='button is-warning m-1'
+                            >
+                              Ban
+                            </button>
+                          ) : (
+                            <button
+                              onClick={() => unbanUser(user.email)}
+                              className='button is-danger m-1'
+                            >
+                              Unban
+                            </button>
+                          )}
+                          {user.role === 'admin' ? (
+                            <button
+                              onClick={() => makeUser(user.email)}
+                              className='button is-warning m-1'
+                            >
+                              Make User
+                            </button>
+                          ) : (
+                            <button
+                              onClick={() => makeAdmin(user.email)}
+                              className='button is-danger m-1'
+                            >
+                              Make Admin
+                            </button>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+              </tbody>
+            </table>
+          )}
         </div>
       </section>
 

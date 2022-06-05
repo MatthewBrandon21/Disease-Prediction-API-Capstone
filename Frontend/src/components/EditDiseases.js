@@ -4,6 +4,8 @@ import Navbar from './Navbar';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import { useNavigate, useParams } from 'react-router-dom';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const EditDiseases = () => {
   const [name, setName] = useState('');
@@ -59,17 +61,19 @@ const EditDiseases = () => {
 
   const UpdateDisease = async (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('name', diseaseName);
+    formData.append('other_name', other_name);
+    formData.append('description', description);
+    formData.append('excerpt', excerpt);
     await axiosJWT.patch(
       `http://localhost:5000/admin/diseases/${slug}`,
-      {
-        name: diseaseName,
-        other_name: other_name,
-        description: description,
-        excerpt: excerpt,
-      },
+      formData,
       {
         headers: {
           Authorization: `Bearer ${token}`,
+          'content-type': 'multipart/form-data',
         },
       }
     );
@@ -101,7 +105,7 @@ const EditDiseases = () => {
   return (
     <>
       <Navbar />
-      <section style={{ minHeight: '100vh' }}>
+      <section className='mx-6 mt-6' style={{ minHeight: '100vh' }}>
         <div className='container mt-5'>
           <h1 className='has-text-centered is-size-3 has-text-weight-bold'>
             Edit Disease
@@ -130,7 +134,13 @@ const EditDiseases = () => {
               </div>
               <div className='field'>
                 <label className='label'>Description</label>
-                <input
+                <CKEditor
+                  editor={ClassicEditor}
+                  data={description}
+                  onChange={(event, editor) => setDescription(editor.getData())}
+                />
+                <label className='label mt-3'>Preview Description</label>
+                <textarea
                   className='input'
                   type='text'
                   placeholder='Description'

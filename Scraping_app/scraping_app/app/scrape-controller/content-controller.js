@@ -74,15 +74,39 @@ function contentLoad($, parameter) {
 }
 
 function getContent1($) {
-  let contentType1 = '#postContent > *:not(div)';
-  let contentType2 = '.post-content > *:not(div)';
-  return contentLoad1($, contentType1) != ''
-    ? contentLoad1($, contentType1)
-    : contentLoad1($, contentType2);
+  let contentType1 = '#postContent';
+  let contentType2 = '.post-content';
+  let contentType3 = '#post-content';
+  let contentType4 = '.postContent';
+  if (
+    contentLoad1($, contentType1) != '' &&
+    contentLoad1($, contentType1) != null
+  ) {
+    return contentLoad1($, contentType1);
+  } else if (
+    contentLoad1($, contentType2) != '' &&
+    contentLoad1($, contentType2) != null
+  ) {
+    return contentLoad1($, contentType2);
+  } else if (
+    contentLoad1($, contentType3) != '' &&
+    contentLoad1($, contentType3) != null
+  ) {
+    return contentLoad1($, contentType3);
+  } else if (
+    contentLoad1($, contentType4) != '' &&
+    contentLoad1($, contentType4) != null
+  ) {
+    return contentLoad1($, contentType4);
+  }
 }
 
 function contentLoad1($, parameter) {
-  return $(parameter).text().replace(/\n/g, ' ');
+  if ($(parameter).html() != null) {
+    return $(parameter).html().replace(/\n/g, ' ');
+  } else {
+    return null;
+  }
 }
 
 module.exports = (url) => scrapeTrending(url);

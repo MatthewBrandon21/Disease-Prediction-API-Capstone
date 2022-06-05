@@ -1,8 +1,18 @@
 import requests
 import csv
 import datetime
+import re
 
 now = datetime.datetime.now()
+
+def cleanhtml(raw_html):
+  cleanimg = re.compile('<img .*?>')
+  cleantextimg = re.sub(cleanimg, '', raw_html)
+  cleana = re.compile('<a .*?>')
+  cleantexta = re.sub(cleana, '', cleantextimg)
+  cleanaend = re.compile('((<\/)a(>))')
+  cleantextaend = re.sub(cleanaend, '', cleantexta)
+  return cleantextaend
 
 write = csv.writer(open('result_data/diseases.csv', 'w', newline=''))
 table_header = ['name', 'other_name', 'slug', 'desc', 'excerpt', 'img', 'updatedAt', 'createdAt']
@@ -23,7 +33,7 @@ for item in diseases_list:
     response_disease = requests.get(disease_url).json()
     if(requests.get(disease_url).status_code == 200):
         excerpt = response_disease['excerpt']
-        desc = response_disease['content']
+        desc = cleanhtml(response_disease['content'])
         img = response_disease['img']
         write = csv.writer(open('result_data/diseases.csv', 'a', encoding="utf-8", newline=''))
         table_header = [name, name, slug, desc, excerpt, img, updatedAt, createdAt]

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { FaEnvelope } from 'react-icons/fa';
+import { FaLock } from 'react-icons/fa';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -36,7 +38,7 @@ const Login = () => {
                 <p className='has-text-centered'>{msg}</p>
                 <div className='field mt-5'>
                   <label className='label'>Email</label>
-                  <div className='controls'>
+                  <p className='control has-icons-left has-icons-right'>
                     <input
                       type='text'
                       className='input'
@@ -44,11 +46,14 @@ const Login = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
-                  </div>
+                    <span className='icon is-small is-left'>
+                      <FaEnvelope />
+                    </span>
+                  </p>
                 </div>
                 <div className='field mt-5'>
                   <label className='label'>Password</label>
-                  <div className='controls'>
+                  <p className='control has-icons-left'>
                     <input
                       type='password'
                       className='input'
@@ -56,7 +61,10 @@ const Login = () => {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
-                  </div>
+                    <span className='icon is-small is-left'>
+                      <FaLock />
+                    </span>
+                  </p>
                 </div>
                 <div className='field mt-5'>
                   <button className='button is-info is-fullwidth'>Login</button>

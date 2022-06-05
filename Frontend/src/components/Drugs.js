@@ -5,12 +5,21 @@ import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import _ from 'lodash';
+import { GiMagnifyingGlass } from 'react-icons/gi';
+import { FaEdit } from 'react-icons/fa';
+import { FaTimesCircle } from 'react-icons/fa';
 
+const pageSize = 30;
 const Drugs = () => {
   const [name, setName] = useState('');
   const [token, setToken] = useState('');
   const [expired, setExpired] = useState('');
   const [drugs, setDrugs] = useState([]);
+  const [paginatedDrugs, setPaginatedDrugs] = useState([]);
+  const [filterDrugs, setFilterDrugs] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [search, setSearch] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -59,55 +68,176 @@ const Drugs = () => {
       },
     });
     setDrugs(response.data);
+    setPaginatedDrugs(_(response.data).slice(0).take(pageSize).value());
+  };
+
+  const deleteDrug = async (slug) => {
+    await axiosJWT.delete(`http://localhost:5000/admin/drugs/${slug}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    getDrugs();
+  };
+
+  const pageCount = drugs ? Math.ceil(drugs.length / pageSize) : 0;
+  if (pageCount === 1) return null;
+  const pages = _.range(1, pageCount + 1);
+
+  const pagination = (pageNo) => {
+    setCurrentPage(pageNo);
+    const startIndex = (pageNo - 1) * pageSize;
+    const paginatedDrugs = _(drugs).slice(startIndex).take(pageSize).value();
+    setPaginatedDrugs(paginatedDrugs);
+  };
+
+  const filterData = (e) => {
+    if (e.target.value !== '') {
+      setSearch(e.target.value);
+      const filterTable = drugs.filter(
+        (o) =>
+          o['name'].toLowerCase().includes(e.target.value.toLowerCase()) ||
+          o['other_name']
+            .toLowerCase()
+            .includes(e.target.value.toLowerCase()) ||
+          o['slug'].toLowerCase().includes(e.target.value.toLowerCase())
+      );
+      setFilterDrugs([...filterTable]);
+    } else {
+      setSearch(e.target.value);
+      setDrugs([...drugs]);
+    }
   };
 
   return (
     <>
       <Navbar />
-      <section style={{ minHeight: '100vh' }}>
+      <section className='mx-6 mt-6' style={{ minHeight: '100vh' }}>
         <div className='container mt-5'>
           <h1 className='has-text-centered is-size-3 has-text-weight-bold'>
             Drugs List
           </h1>
-          <div class='container m-3 has-text-right has-text-centered-mobile'>
-            <Link to='/drugs-add' class='button is-primary'>
-              Add Drug
+          <p className='has-text-centered'>{`(${drugs.length} data)`}</p>
+          <div className='container m-3 has-text-right has-text-centered-mobile'>
+            <Link to='/drugs-add' className='button is-primary'>
+              Add Drugs
             </Link>
           </div>
-          <table className='table is-striped is-fullwidth is-hoverable mt-6 mb-6'>
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Other Name</th>
-                <th>Slug</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tfoot>
-              <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Other Name</th>
-                <th>Slug</th>
-                <th>Action</th>
-              </tr>
-            </tfoot>
-            <tbody>
-              {drugs.map((drug, index) => (
-                <tr key={drug.id}>
-                  <th>{index + 1}</th>
-                  <td>{drug.name}</td>
-                  <td>{drug.other_name}</td>
-                  <td>{drug.slug}</td>
-                  <td>
-                    <button className='button is-info m-1'>Details</button>
-                    <button className='button is-danger m-1'>Delete</button>
-                  </td>
+          <input
+            className='input m-4'
+            type='text'
+            placeholder='Search..'
+            value={search}
+            onChange={filterData}
+          ></input>
+          {!paginatedDrugs ? (
+            'No data found'
+          ) : (
+            <table className='table is-striped is-fullwidth is-hoverable mt-6 mb-6'>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Other Name</th>
+                  <th>Slug</th>
+                  <th>Action</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th>Name</th>
+                  <th>Other Name</th>
+                  <th>Slug</th>
+                  <th>Action</th>
+                </tr>
+              </tfoot>
+              <tbody>
+                {search.length > 0
+                  ? filterDrugs.map((drug, index) => (
+                      <tr key={drug.id}>
+                        <td>{drug.name}</td>
+                        <td>{drug.other_name}</td>
+                        <td>{drug.slug}</td>
+                        <td>
+                          <Link
+                            to={`/drugs-details/${drug.slug}`}
+                            className='button is-info m-1'
+                          >
+                            <GiMagnifyingGlass />
+                          </Link>
+                          <Link
+                            to={`/drugs-edit/${drug.slug}`}
+                            className='button is-warning m-1'
+                          >
+                            <FaEdit />
+                          </Link>
+                          <button
+                            onClick={() => deleteDrug(drug.slug)}
+                            className='button is-danger m-1'
+                          >
+                            <FaTimesCircle />
+                          </button>
+                        </td>
+                      </tr>
+                    ))
+                  : paginatedDrugs.map((drug, index) => (
+                      <tr key={drug.id}>
+                        <td>{drug.name}</td>
+                        <td>{drug.other_name}</td>
+                        <td>{drug.slug}</td>
+                        <td>
+                          <Link
+                            to={`/drugs-details/${drug.slug}`}
+                            className='button is-info m-1'
+                          >
+                            <GiMagnifyingGlass />
+                          </Link>
+                          <Link
+                            to={`/drugs-edit/${drug.slug}`}
+                            className='button is-warning m-1'
+                          >
+                            <FaEdit />
+                          </Link>
+                          <button
+                            onClick={() => deleteDrug(drug.slug)}
+                            className='button is-danger m-1'
+                          >
+                            <FaTimesCircle />
+                          </button>
+                        </td>
+                      </tr>
+                    ))}{' '}
+              </tbody>
+            </table>
+          )}
+          {search > 0 ? (
+            <div></div>
+          ) : (
+            <nav
+              className='pagination is-centered mb-6'
+              role='navigation'
+              aria-label='pagination'
+            >
+              <ul className='pagination-list'>
+                {pages.map((page) => (
+                  <li key={page} className='mb-3'>
+                    <a
+                      href='#pagination'
+                      className={
+                        page === currentPage
+                          ? 'pagination-link is-current'
+                          : 'pagination-link'
+                      }
+                      aria-label='Page 1'
+                      aria-current='page'
+                      onClick={() => pagination(page)}
+                    >
+                      {page}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
         </div>
       </section>
 

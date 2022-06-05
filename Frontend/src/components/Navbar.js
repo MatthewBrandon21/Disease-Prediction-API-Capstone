@@ -61,7 +61,7 @@ const Navbar = () => {
             <Link to='/diseases' className='navbar-item'>
               Diseases
             </Link>
-            <Link to='/diseases' className='navbar-item'>
+            <Link to='/diseases-category' className='navbar-item'>
               Disease Categories
             </Link>
             <Link to='/drugs' className='navbar-item'>

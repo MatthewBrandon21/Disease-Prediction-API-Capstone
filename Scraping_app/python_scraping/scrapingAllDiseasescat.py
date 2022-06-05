@@ -1,8 +1,18 @@
 import requests
 import csv
 import datetime
+import re
 
 now = datetime.datetime.now()
+
+def cleanhtml(raw_html):
+  cleanimg = re.compile('<img .*?>')
+  cleantextimg = re.sub(cleanimg, '', raw_html)
+  cleana = re.compile('<a .*?>')
+  cleantexta = re.sub(cleana, '', cleantextimg)
+  cleanaend = re.compile('((<\/)a(>))')
+  cleantextaend = re.sub(cleanaend, '', cleantexta)
+  return cleantextaend
 
 diseases_cat = ['virus', 'kanker', 'jantung', 'otak', 'psikologi', 'defisiensi', 'infeksi', 'mata', 'pencernaan']
 

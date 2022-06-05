@@ -3,7 +3,7 @@ const { ROOT_URL } = require('../../config/source');
 
 async function penyakitcatController(req, res, next) {
   try {
-    const url = `${ROOT_URL}/otak`;
+    const url = `${ROOT_URL}/${req.params.url}`;
     const data = await scrapeController(url);
     return res.json(data);
   } catch (err) {

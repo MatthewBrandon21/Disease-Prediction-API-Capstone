@@ -1,8 +1,18 @@
 import requests
 import csv
 import datetime
+import re
 
 now = datetime.datetime.now()
+
+def cleanhtml(raw_html):
+  cleanimg = re.compile('<img .*?>')
+  cleantextimg = re.sub(cleanimg, '', raw_html)
+  cleana = re.compile('<a .*?>')
+  cleantexta = re.sub(cleana, '', cleantextimg)
+  cleanaend = re.compile('((<\/)a(>))')
+  cleantextaend = re.sub(cleanaend, '', cleantexta)
+  return cleantextaend
 
 write = csv.writer(open('result_data/drugs.csv', 'w', newline=''))
 table_header = ['name', 'other_name', 'slug', 'desc', 'excerpt', 'img', 'updatedAt', 'createdAt']
@@ -22,24 +32,24 @@ for item in drugs_list:
     drug_url = base_url + 'content/' + item['permalink']
     response_drug = requests.get(drug_url).json()
     if(requests.get(drug_url).status_code == 200):
-        excerpt = 'default excerpt'
+        excerpt = 'Summary'
         try:
             excerpt = response_drug['excerpt']
         except:
-            excerpt = 'default excerpt'
+            excerpt = 'Summary'
         
-        desc = 'default content'
+        desc = 'Description'
         try:
-            desc = response_drug['content']
+            desc = cleanhtml(response_drug['content'])
         except:
-            desc = 'default content'
+            desc = 'Description'
         
-
-        img = 'default.jpg'
+        img = 'https://storage.googleapis.com/diseases-prediction-bucket/diseases-prediction-default-thumbnail.jpg'
         try:
             img = response_drug['img']
         except:
-            img = 'default.jpg'
+            img = 'https://storage.googleapis.com/diseases-prediction-bucket/diseases-prediction-default-thumbnail.jpg'
+        
         write = csv.writer(open('result_data/drugs.csv', 'a', encoding="utf-8", newline=''))
         table_header = [name, name, slug, desc, excerpt, img, updatedAt, createdAt]
         write.writerow(table_header)

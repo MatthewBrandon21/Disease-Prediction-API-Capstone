@@ -1,6 +1,6 @@
 # API Disease Prediction based Symptoms with Machine Learning
 
-Product Capstone Bangkit 2022
+Product Capstone Bangkit Academy 2022
 
 ## Tech Stack
 
@@ -13,6 +13,24 @@ Product Capstone Bangkit 2022
 **Server:** NodeJS, ExpressJS, MySQL, Sequelize, Google Cloud Storage, Multer, Joi, Jsonwebtoken, Cookie-Parser, Dotenv, Cors, Bcrypt
 
 **Scraping App:** Python, request, ReGex, csv, GoogleTrans. & NodeJS, ExpressJs, Cheerio, Axios.
+
+## API and Admin dashboard Features
+
+- JWT Login with access and refresh token (http only cookie) (access token expired in 20s)
+
+- 2 Users role, admin & users with login validation and admin user management (ban, make admin, etc)
+
+- Role based route authorization
+
+- Upload files to Google Cloud Storage (Max 5mb)
+
+- CRUD diseases, diseases categories, drugs, deseases-drugs with deletion validation (won't delete data if used by other table)
+
+- Search to database
+
+- Form validation using JOI
+
+- SSL connection
 
 ## API Deployment Link
 
@@ -120,7 +138,7 @@ Access token expired in 20s. Please read web in Acknowledgement
 #### Update profile
 
 ```http
-  POST /register
+  POST /user/update
 ```
 
 | Parameter   | Type     | Description  |
@@ -157,7 +175,7 @@ Access token expired in 20s. Please read web in Acknowledgement
 
 #### notes
 
-"file" use http post file upload. Please read web in Acknowledgement
+"file" use http post file upload. Max file 5Mb (.jpg, .png, .jpeg). Please read web in Acknowledgement
 
 ## Data API Reference (login required)
 
@@ -238,6 +256,76 @@ use Authorization -> Bearer Token
 | :-------- | :------- | :------------------------------ |
 | `keyword` | `string` | **Required**. Anything in drugs |
 
+## Admin API Reference (Admin role required)
+
+#### Post admin login
+
+```http
+  POST /adminlogin
+```
+
+#### Get all users
+
+```http
+  GET /users
+```
+
+#### Get ban users
+
+```http
+  GET /banuser/:email
+```
+
+#### Get unban users
+
+```http
+  GET /unbanuser/:email
+```
+
+#### Get make admin
+
+```http
+  GET /makeadmin/:email
+```
+
+#### Get make user
+
+```http
+  GET /makeuser/:email
+```
+
+## Admin CRUD API Reference (Admin role required) (also applies to other tables)
+
+#### Get all diseases
+
+```http
+  GET /admin/diseases
+```
+
+#### Get diseases by slug
+
+```http
+  GET /admin/diseases/:slug
+```
+
+#### Post make disease
+
+```http
+  POST /admin/diseases
+```
+
+#### Patch update disease
+
+```http
+  PATCH /admin/diseases/:slug
+```
+
+#### Delete disease
+
+```http
+  DELETE /admin/diseases/:slug
+```
+
 ## Acknowledgements
 
 - [Diseases Prediction Mobile App ](https://github.com/KristiantoD/disease-prediction-app)
@@ -262,7 +350,7 @@ To deploy this project run
   npm run start
 ```
 
-App will run in port 5000
+API app will run in port 5000 & React app will run in port 3000
 
 ## Environment Variables
 
@@ -272,4 +360,16 @@ To run this project, you will need to add the following environment variables to
 
 `REFRESH_TOKEN_SECRET`
 
-Sequelize database configuration in config/database.js
+`GCS_BUCKET`
+
+`GCLOUD_PROJECT`
+
+`GCLOUD_CLIENT_EMAIL`
+
+`GCLOUD_PRIVATE_KEY`
+
+Sequelize MySql database configuration in config/database.js
+
+Set your frontend domain in cors configuration in index.js
+
+If deployment have ssl, set secure mode in login cookie setting in app/controllers/Users.js

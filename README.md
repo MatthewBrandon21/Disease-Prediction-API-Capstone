@@ -6,15 +6,25 @@ Product Capstone Bangkit 2022
 
 **Mobile:** Kotlin
 
-**Client:** React, Axios, Bulma CSS, CKEditor 5
+**Machine Learning:** Fast API, Tensorflow, Gunicorn
 
-**Server:** Node, Express, MySQL, Sequelize, Google Cloud Storage, Multer
+**Client:** React, React-dom, Axios, Bulma CSS, CKEditor 5, Lodash
+
+**Server:** NodeJS, ExpressJS, MySQL, Sequelize, Google Cloud Storage, Multer, Joi, Jsonwebtoken, Cookie-Parser, Dotenv, Cors, Bcrypt
+
+**Scraping App:** Python, request, ReGex, csv, GoogleTrans. & NodeJS, ExpressJs, Cheerio, Axios.
 
 ## API Deployment Link
 
 https://api.capstone.matthewbd.my.id
 
-deployed in GCP CE + Google Cloud Storage Bucket
+deployed in GCP CE (N2 High CPU 2 Cores 2Gb ram) + Google Cloud Storage Bucket
+
+## ML API Deployment Link
+
+https://ml.matthewbd.my.id
+
+deployed in GCP CE (N2 High CPU 2 Cores 2Gb ram)
 
 ## Admin Dashboard Deployment
 
@@ -229,6 +239,11 @@ use Authorization -> Bearer Token
 | `keyword` | `string` | **Required**. Anything in drugs |
 
 ## Acknowledgements
+
+- [Diseases Prediction Mobile App ](https://github.com/KristiantoD/disease-prediction-app)
+- [Fast API ML API ](https://github.com/danielsyahputra13/ml_capstone)
+- [ML Docs ](https://ml.matthewbd.my.id/docs)
+- [ML Datasets ](https://archive.ics.uci.edu/ml/datasets/Drug+Review+Dataset+%28Drugs.com%29)
 
 - [Kotlin AccessToken and RefreshToken ](https://stackoverflow.com/questions/22450036/refreshing-oauth-token-using-retrofit-without-modifying-all-calls)
 - [Kotlin File POST ](https://stackoverflow.com/questions/57490228/how-to-upload-an-image-to-a-server-using-http-request-in-kotlin)
